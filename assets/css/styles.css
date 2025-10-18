@@ -179,9 +179,24 @@ textarea { min-height: 120px; }
     font-weight: 700;
     color: white;
   }
-  .nav { flex-direction: column; gap: 16px; padding: 16px 0; }
-  .brand { order: 1; }
-  .nav nav { order: 2; width: 100%; }
+  
+  .nav { 
+    flex-direction: row; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 16px; 
+    padding: 16px 0; 
+  }
+  
+  .brand { 
+    order: 1; 
+    flex: 1;
+  }
+  
+  .nav nav { 
+    order: 2; 
+    flex: none;
+  }
   
   .nav-links { 
     display: none; 
