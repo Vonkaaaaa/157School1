@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
       links.classList.toggle('open');
       toggle.setAttribute('aria-expanded', !isOpen);
       
-      // Update button text
-      toggle.textContent = isOpen ? 'Меню' : 'Закрити';
+      // Update button icon
+      toggle.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
     });
     
     // Close menu when clicking on a link
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.addEventListener('click', () => {
         links.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = 'Меню';
+        toggle.style.transform = 'rotate(0deg)';
       });
     });
     
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!toggle.contains(e.target) && !links.contains(e.target)) {
         links.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = 'Меню';
+        toggle.style.transform = 'rotate(0deg)';
       }
     });
     
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.innerWidth > 640) {
         links.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
-        toggle.textContent = 'Меню';
+        toggle.style.transform = 'rotate(0deg)';
       }
     });
   }
