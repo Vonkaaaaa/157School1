@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ліцей №157 м. Харків — Головна</title>
+    <meta name="description" content="Офіційний сайт Харківського ліцею №157: новини, розклад, вчителі, вступ та контакти.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <div class="bg-decor" aria-hidden="true">
+      <span class="blob one"></span>
+      <span class="blob two"></span>
+      <span class="blob three"></span>
+      <span class="blob four"></span>
+      <span class="blob five"></span>
+      <span class="blob six"></span>
+      <span class="blob seven"></span>
+      <span class="blob eight"></span>
+    </div>
+    <header class="site-header" role="banner">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img class="brand-badge-img" src="assets/img/log.jpg" alt="Ліцей №157">
+          <span>Ліцей №157</span>
+        </a>
+        <nav aria-label="Основна навігація">
+          <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" data-menu-toggle>
+            Меню
+          </button>
+          <div id="nav-links" class="nav-links" data-nav-links>
+            <a href="index.html" aria-current="page">Головна</a>
+            <a href="about.html">Про ліцей</a>
+            <a href="news.html">Новини</a>
+            <a href="schedule.html">Розклад</a>
+            <a href="teachers.html">Вчителі</a>
+            <a href="admission.html">Вступ</a>
+            <a href="contacts.html">Контакти</a>
+            <a href="admin.html" class="admin-link">Адмін</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="reveal watermark">
+            <span class="pill">Офіційний сайт</span>
+            <h1><span class="text-gradient">Ласкаво просимо</span> до ліцею №157</h1>
+            <p>Тут ви знайдете актуальні новини, розклад занять, інформацію про вчителів та правила вступу.</p>
+            <p>
+              <a class="cta" href="news.html">Переглянути новини</a>
+            </p>
+          </div>
+          <div class="reveal">
+            <img class="logo-hero" src="assets/img/log.jpg" alt="Логотип ліцею №157">
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-links">
+        <div class="container">
+          <h2 class="section-title accent-underline">Швидкі посилання</h2>
+          <p class="muted">Популярні розділи сайту</p>
+          <div class="cards">
+            <div class="modern-card reveal">
+              <div class="modern-card-icon">📅</div>
+              <h3>Розклад</h3>
+              <p>Актуальний розклад уроків та дзвінків для всіх класів</p>
+              <a href="schedule.html" class="modern-card-link">Переглянути →</a>
+            </div>
+            <div class="modern-card reveal">
+              <div class="modern-card-icon">🎓</div>
+              <h3>Вступ</h3>
+              <p>Правила прийому, необхідні документи та терміни подачі</p>
+              <a href="admission.html" class="modern-card-link">Дізнатися детальніше →</a>
+            </div>
+            <div class="modern-card reveal">
+              <div class="modern-card-icon">📞</div>
+              <h3>Контакти</h3>
+              <p>Адреса ліцею, телефони та форма зворотного зв'язку</p>
+              <a href="contacts.html" class="modern-card-link">Зв'язатися →</a>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <div class="stats">
+            <div class="stat reveal">
+              <div class="num">850+</div>
+              <div class="label">Учнів</div>
+            </div>
+            <div class="stat reveal">
+              <div class="num">65</div>
+              <div class="label">Вчителів</div>
+            </div>
+            <div class="stat reveal">
+              <div class="num">32</div>
+              <div class="label">Кабінети</div>
+            </div>
+            <div class="stat reveal">
+              <div class="num">1991</div>
+              <div class="label">Рік заснування</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div>© <span id="year"></span> Ліцей №157 м. Харків. Всі права захищені.</div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+  </html>
+
+
+

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Про ліцей — Ліцей №157 м. Харків</title>
+    <meta name="description" content="Інформація про ліцей №157: історія, місія, досягнення та освітні програми.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <div class="bg-decor" aria-hidden="true">
+      <span class="blob one"></span>
+      <span class="blob two"></span>
+      <span class="blob three"></span>
+      <span class="blob four"></span>
+      <span class="blob five"></span>
+      <span class="blob six"></span>
+      <span class="blob seven"></span>
+      <span class="blob eight"></span>
+    </div>
+    <header class="site-header" role="banner">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img class="brand-badge-img" src="assets/img/log.jpg" alt="Ліцей №157">
+          <span>Ліцей №157</span>
+        </a>
+        <nav aria-label="Основна навігація">
+          <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" data-menu-toggle>
+            Меню
+          </button>
+          <div id="nav-links" class="nav-links" data-nav-links>
+            <a href="index.html">Головна</a>
+            <a href="about.html" aria-current="page">Про ліцей</a>
+            <a href="news.html">Новини</a>
+            <a href="schedule.html">Розклад</a>
+            <a href="teachers.html">Вчителі</a>
+            <a href="admission.html">Вступ</a>
+            <a href="contacts.html">Контакти</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="reveal">
+            <span class="pill">Про наш ліцей</span>
+            <h1><span class="text-gradient">Ліцей №157</span> — освіта майбутнього</h1>
+            <p>Ми створюємо освітнє середовище, де кожен учень може розкрити свій потенціал і досягти видатних результатів.</p>
+          </div>
+          <div class="reveal">
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop" alt="Сучасні класи ліцею">
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2 class="section-title accent-underline">Наша історія</h2>
+          <div class="cards">
+            <div class="card reveal">
+              <h3>1991</h3>
+              <p>Заснування ліцею. Перші 80 учнів почали навчання в нашому ліцеї.</p>
+            </div>
+            <div class="card reveal">
+              <h3>2003</h3>
+              <p>Відкриття профільних класів з поглибленим вивченням точних наук.</p>
+            </div>
+            <div class="card reveal">
+              <h3>2018</h3>
+              <p>Модернізація інфраструктури та впровадження цифрових технологій.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2 class="section-title accent-underline">Наші досягнення</h2>
+          <div class="stats">
+            <div class="stat reveal">
+              <div class="num">92%</div>
+              <div class="label">Поступають у ВНЗ</div>
+            </div>
+            <div class="stat reveal">
+              <div class="num">23</div>
+              <div class="label">Переможців олімпіад</div>
+            </div>
+            <div class="stat reveal">
+              <div class="num">175</div>
+              <div class="label">Середній бал ЗНО</div>
+            </div>
+            <div class="stat reveal">
+              <div class="num">33</div>
+              <div class="label">Років досвіду</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <h2 class="section-title accent-underline">Освітні програми</h2>
+          <div class="cards">
+            <div class="card reveal">
+              <div class="icon-circle">🔬</div>
+              <h3>Фізико-математичний профіль</h3>
+              <p>Поглиблене вивчення математики, фізики та інформатики. Підготовка до технічних ВНЗ.</p>
+            </div>
+            <div class="card reveal">
+              <div class="icon-circle">📚</div>
+              <h3>Гуманітарний профіль</h3>
+              <p>Вивчення літератури, історії, суспільствознавства. Підготовка до гуманітарних спеціальностей.</p>
+            </div>
+            <div class="card reveal">
+              <div class="icon-circle">🌍</div>
+              <h3>Лінгвістичний профіль</h3>
+              <p>Поглиблене вивчення іноземних мов. Міжнародні програми обміну.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div>© <span id="year"></span> Ліцей №157 м. Харків. Всі права захищені.</div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

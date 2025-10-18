@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Адміністрування — Ліцей №157</title>
+    <meta name="description" content="Панель администрации для управления сайтом школы">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+  </head>
+  <body>
+    <div class="bg-decor" aria-hidden="true">
+      <span class="blob one"></span>
+      <span class="blob two"></span>
+      <span class="blob three"></span>
+      <span class="blob four"></span>
+      <span class="blob five"></span>
+      <span class="blob six"></span>
+      <span class="blob seven"></span>
+      <span class="blob eight"></span>
+    </div>
+    
+    <header class="site-header" role="banner">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img class="brand-badge-img" src="assets/img/log.jpg" alt="Ліцей №157">
+          <span>Ліцей №157</span>
+        </a>
+        <nav aria-label="Основна навігація">
+          <div class="nav-links">
+            <a href="index.html">Головна</a>
+            <a href="about.html">Про ліцей</a>
+            <a href="news.html">Новини</a>
+            <a href="schedule.html">Розклад</a>
+            <a href="teachers.html">Вчителі</a>
+            <a href="admission.html">Вступ</a>
+            <a href="contacts.html">Контакти</a>
+            <a href="admin.html" aria-current="page" class="admin-link">Адмін</a>
+            <a href="#" id="logout-btn" class="btn-danger">Вийти</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="container">
+        <div class="admin-header">
+          <h1>Панель администрации</h1>
+          <p>Управление страницами и содержимым сайта</p>
+        </div>
+
+        <div class="admin-tabs">
+          <button class="tab-btn active" data-tab="pages">Страницы</button>
+          <button class="tab-btn" data-tab="content">Редактирование</button>
+          <button class="tab-btn" data-tab="settings">Настройки</button>
+        </div>
+
+        <!-- Вкладка управления страницами -->
+        <div class="tab-content active" id="pages-tab">
+          <div class="admin-section">
+            <div class="section-header">
+              <h2>Управление страницами</h2>
+              <button class="btn btn-primary btn-large btn-icon btn-save" id="add-page-btn">Добавить страницу</button>
+            </div>
+            
+            <div class="pages-list" id="pages-list">
+              <!-- Страницы будут загружены динамически -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладка редактирования содержимого -->
+        <div class="tab-content" id="content-tab">
+          <div class="admin-section">
+            <div class="section-header">
+              <h2>Редактирование содержимого</h2>
+              <select id="page-selector" class="form-select">
+                <option value="">Выберите страницу для редактирования</option>
+              </select>
+            </div>
+            
+            <div class="editor-container" id="editor-container" style="display: none;">
+              <div class="editor-toolbar">
+                <button class="btn btn-success btn-icon btn-save" id="save-content-btn">Сохранить изменения</button>
+                <button class="btn btn-primary btn-icon" id="preview-btn">Предварительный просмотр</button>
+                <button class="btn btn-warning btn-icon" id="reset-content-btn">Сбросить изменения</button>
+              </div>
+              
+              <div class="editor-content">
+                <div class="editor-sidebar">
+                  <h3>Структура страницы</h3>
+                  <div class="content-tree" id="content-tree">
+                    <!-- Дерево содержимого будет загружено динамически -->
+                  </div>
+                </div>
+                
+                <div class="editor-main">
+                  <div class="editor-tabs">
+                    <button class="editor-tab active" data-editor="html">HTML</button>
+                    <button class="editor-tab" data-editor="css">CSS</button>
+                    <button class="editor-tab" data-editor="js">JavaScript</button>
+                  </div>
+                  
+                  <div class="editor-areas">
+                    <textarea id="html-editor" class="editor-textarea" placeholder="HTML содержимое..."></textarea>
+                    <textarea id="css-editor" class="editor-textarea" placeholder="CSS стили..." style="display: none;"></textarea>
+                    <textarea id="js-editor" class="editor-textarea" placeholder="JavaScript код..." style="display: none;"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Вкладка настроек -->
+        <div class="tab-content" id="settings-tab">
+          <div class="admin-section">
+            <h2>Настройки сайта</h2>
+            
+            <div class="settings-grid">
+              <div class="setting-group">
+                <label for="site-title">Название сайта</label>
+                <input type="text" id="site-title" class="form-input" value="Ліцей №157 м. Харків">
+              </div>
+              
+              <div class="setting-group">
+                <label for="site-description">Описание сайта</label>
+                <textarea id="site-description" class="form-textarea">Официальный сайт школы: новости, расписание, учителя, поступление и контакты.</textarea>
+              </div>
+              
+              <div class="setting-group">
+                <label for="admin-email">Email администратора</label>
+                <input type="email" id="admin-email" class="form-input" value="admin@lyceum157.edu">
+              </div>
+              
+              <div class="setting-group">
+                <label for="backup-frequency">Частота резервного копирования</label>
+                <select id="backup-frequency" class="form-select">
+                  <option value="daily">Ежедневно</option>
+                  <option value="weekly" selected>Еженедельно</option>
+                  <option value="monthly">Ежемесячно</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="settings-actions">
+              <button class="btn btn-success btn-large btn-icon btn-save" id="save-settings-btn">Сохранить настройки</button>
+              <button class="btn btn-primary btn-large btn-icon" id="backup-now-btn">Создать резервную копию</button>
+              <button class="btn btn-warning btn-large btn-icon" id="restore-backup-btn">Восстановить из резервной копии</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Модальные окна -->
+    <div class="modal" id="add-page-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Добавить новую страницу</h3>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="add-page-form">
+            <div class="form-group">
+              <label for="page-title">Название страницы</label>
+              <input type="text" id="page-title" class="form-input" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="page-url">URL страницы</label>
+              <input type="text" id="page-url" class="form-input" placeholder="about-school" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="page-description">Описание</label>
+              <textarea id="page-description" class="form-textarea"></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="page-template">Шаблон (выберите существующую страницу для копирования)</label>
+              <select id="page-template" class="form-select">
+                <option value="about.html">О школе (about.html)</option>
+                <option value="news.html">Новости (news.html)</option>
+                <option value="contacts.html">Контакты (contacts.html)</option>
+                <option value="teachers.html">Учителя (teachers.html)</option>
+                <option value="schedule.html">Расписание (schedule.html)</option>
+                <option value="admission.html">Поступление (admission.html)</option>
+                <option value="index.html">Главная (index.html)</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary btn-small" id="cancel-add-page">Отмена</button>
+          <button class="btn btn-success btn-large btn-icon btn-save" id="confirm-add-page">Создать страницу</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="delete-page-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Удалить страницу</h3>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Вы уверены, что хотите удалить страницу <strong id="delete-page-name"></strong>?</p>
+          <p class="text-warning">Это действие нельзя отменить!</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary btn-small" id="cancel-delete-page">Отмена</button>
+          <button class="btn btn-danger btn-important btn-icon btn-delete" id="confirm-delete-page">Удалить</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="preview-modal">
+      <div class="modal-content large">
+        <div class="modal-header">
+          <h3>Предварительный просмотр</h3>
+          <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+          <iframe id="preview-frame" src="" width="100%" height="600px"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/admin.js"></script>
+  </body>
+</html>

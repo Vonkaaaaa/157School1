@@ -1,0 +1,41 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="redGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="white" stroke="url(#redGradient)" stroke-width="3"/>
+  
+  <!-- Main building structure -->
+  <rect x="40" y="80" width="120" height="80" fill="url(#redGradient)" rx="4"/>
+  
+  <!-- Columns -->
+  <rect x="50" y="70" width="8" height="90" fill="url(#redGradient)"/>
+  <rect x="70" y="70" width="8" height="90" fill="url(#redGradient)"/>
+  <rect x="90" y="70" width="8" height="90" fill="url(#redGradient)"/>
+  <rect x="110" y="70" width="8" height="90" fill="url(#redGradient)"/>
+  <rect x="130" y="70" width="8" height="90" fill="url(#redGradient)"/>
+  <rect x="150" y="70" width="8" height="90" fill="url(#redGradient)"/>
+  
+  <!-- Roof -->
+  <polygon points="30,80 100,50 170,80" fill="url(#redGradient)"/>
+  
+  <!-- Central entrance -->
+  <rect x="85" y="120" width="30" height="40" fill="white"/>
+  <rect x="90" y="125" width="20" height="30" fill="url(#redGradient)" opacity="0.3"/>
+  
+  <!-- Windows -->
+  <rect x="45" y="90" width="12" height="15" fill="white" rx="2"/>
+  <rect x="65" y="90" width="12" height="15" fill="white" rx="2"/>
+  <rect x="125" y="90" width="12" height="15" fill="white" rx="2"/>
+  <rect x="145" y="90" width="12" height="15" fill="white" rx="2"/>
+  
+  <!-- Text LYCEUM -->
+  <text x="100" y="35" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="url(#redGradient)">LYCEUM</text>
+  
+  <!-- Text SCHOOL -->
+  <text x="100" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="url(#redGradient)" letter-spacing="2px">SCHOOL</text>
+</svg>
