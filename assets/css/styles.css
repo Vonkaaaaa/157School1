@@ -1336,6 +1336,19 @@ h4:hover, h5:hover, h6:hover {
   margin-bottom: 20px;
 }
 
+/* Favicon and icon styles */
+link[rel="icon"],
+link[rel="shortcut icon"],
+link[rel="apple-touch-icon"] {
+  border-radius: 8px;
+}
+
+/* For any favicon-like images */
+.favicon-style {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 /* Utility classes */
 .text-center {
   text-align: center;
