@@ -48,18 +48,97 @@ img:hover { transform: scale(1.02); }
 .icon-circle:hover { transform: translateY(-3px) scale(1.1) rotate(5deg); box-shadow: 0 15px 30px rgba(220,38,38,.4); }
 
 /* Header & Navigation */
-.site-header { border-bottom: 1px solid rgba(229,231,235,.3); background: rgba(255,255,255,.4); position: sticky; top: 0; z-index: 50; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 4px 10px rgba(0,0,0,0.04); }
+.site-header { 
+  border-bottom: 1px solid rgba(229,231,235,.3); 
+  background: rgba(255,255,255,.4); 
+  position: sticky; 
+  top: 0; 
+  z-index: 50; 
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
 .nav { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 0; }
 .brand { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 14px; color: var(--brand); position: static; top: auto; left: auto; z-index: auto; }
 .logo { height: 8px; width: auto; display: block; object-fit: contain; background: transparent; padding: 0; border-radius: 2px; box-shadow: none; border: none; }
 .brand-badge { display: none; }
 .brand-badge-img { height: 40px; width: 40px; display: block; position: static; top: auto; left: auto; z-index: auto; transition: transform 0.3s ease; border-radius: 8px; }
 .brand:hover .brand-badge-img { transform: translateY(-2px) scale(1.1) rotate(-3deg); }
-.nav-links { display: flex; align-items: center; gap: 10px; }
+.nav-links { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  min-height: 40px;
+  flex-wrap: nowrap;
+}
 .nav-links a { padding: 8px 12px; border-radius: 8px; position: relative; transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease; background: rgba(255,255,255,.4); border: 1px solid rgba(229,231,235,.5); box-shadow: 0 2px 4px rgba(0,0,0,0.03); color: var(--text); font-weight: 600; font-size: 14px; }
 .nav-links a:hover { text-decoration: none; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); background: #fff; }
-.nav-links a:active { transform: translateY(0); box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+.nav-links a:active { transform: translateY(-1px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); background: #fff; }
 .nav-links a[aria-current="page"] { background: #fff; border-color: var(--border); box-shadow: 0 6px 14px rgba(220,38,38,0.12); }
+
+.nav-links .register-link,
+.nav-links .login-link,
+.nav-links .profile-link,
+.nav-links .logout-link {
+  background: rgba(255,255,255,.4);
+  color: var(--text) !important;
+  padding: 8px 12px;
+  border-radius: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(229,231,235,.5);
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.nav-links .register-link:hover,
+.nav-links .login-link:hover,
+.nav-links .profile-link:hover,
+.nav-links .logout-link:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(220, 38, 38, 0.15);
+  background: #fff;
+  border-color: var(--brand-dark);
+}
+
+.nav-links .register-link:active,
+.nav-links .login-link:active {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(220, 38, 38, 0.2);
+  background: #fff;
+  border-color: var(--brand-dark);
+}
+
+.nav-links .profile-link:active,
+.nav-links .logout-link:active {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(220, 38, 38, 0.15);
+  background: #fff;
+  border-color: var(--brand-dark);
+}
+
+.nav-links .register-link[aria-current="page"],
+.nav-links .login-link[aria-current="page"],
+.nav-links .profile-link[aria-current="page"] {
+  background: #fff;
+  border-color: var(--brand-dark);
+  box-shadow: 0 6px 14px rgba(220,38,38,0.2);
+}
+
+.nav-links .logout-link {
+  color: #ff6b6b !important;
+  border-color: rgba(255, 107, 107, 0.3);
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.nav-links .logout-link:hover {
+  color: #ff5252 !important;
+  border-color: #ff5252;
+  background: rgba(255, 82, 82, 0.1);
+  box-shadow: 0 8px 16px rgba(255, 107, 107, 0.25);
+}
 
 .nav-links .admin-link {
   background: var(--danger);
@@ -864,8 +943,21 @@ textarea { min-height: 120px; }
   }
   
   .nav-links a:active {
-    background: var(--red-light);
+    background: #fff;
     transform: scale(0.98);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.15);
+    border-color: var(--brand-dark);
+  }
+  
+  /* Специальные активные состояния для кнопок навигации на мобильных */
+  .nav-links .register-link:active,
+  .nav-links .login-link:active,
+  .nav-links .profile-link:active,
+  .nav-links .logout-link:active {
+    background: #fff !important;
+    border-color: var(--brand-dark) !important;
+    transform: scale(0.98) !important;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2) !important;
   }
   
   /* Improve scrolling performance */
@@ -1462,6 +1554,82 @@ link[rel="apple-touch-icon"] {
 /* Waves footer */
 .waves { position: relative; height: 120px; overflow: hidden; }
 .waves svg { position: absolute; bottom: 0; left: 0; width: 100%; height: auto; }
+
+/* Унифицированные стили для кнопок навигации - предотвращение опускания */
+.nav-links a {
+  box-sizing: border-box !important;
+  vertical-align: top !important;
+}
+
+.nav-links .register-link,
+.nav-links .login-link,
+.nav-links .profile-link,
+.nav-links .logout-link {
+  box-sizing: border-box !important;
+  vertical-align: top !important;
+  position: relative !important;
+  top: 0 !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  display: inline-block !important;
+}
+
+/* Скрытие кнопок при авторизации */
+.nav-links .register-link[style*="display: none"],
+.nav-links .login-link[style*="display: none"] {
+  display: none !important;
+}
+
+.nav-links .profile-link[style*="display: none"] {
+  display: none !important;
+}
+
+.nav-links .register-link:active,
+.nav-links .login-link:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 16px rgba(220, 38, 38, 0.2) !important;
+  background: #fff !important;
+  border-color: var(--brand-dark) !important;
+  position: relative !important;
+  top: 0 !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  vertical-align: top !important;
+}
+
+.nav-links .profile-link:active,
+.nav-links .logout-link:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 8px 16px rgba(220, 38, 38, 0.15) !important;
+  background: #fff !important;
+  border-color: var(--brand-dark) !important;
+  position: relative !important;
+  top: 0 !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  vertical-align: top !important;
+}
+
+/* Дополнительная защита от опускания */
+.nav-links .register-link:focus,
+.nav-links .login-link:focus {
+  transform: translateY(-1px) !important;
+  position: relative !important;
+  top: 0 !important;
+  margin: 0 !important;
+}
+
+.nav-links .register-link:hover,
+.nav-links .login-link:hover {
+  transform: translateY(-1px) !important;
+  position: relative !important;
+  top: 0 !important;
+  margin: 0 !important;
+}
 
 
 

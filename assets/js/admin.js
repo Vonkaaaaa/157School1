@@ -265,7 +265,13 @@ class AdminPanel {
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
         if (confirm('Вы уверены, что хотите выйти?')) {
-          window.location.href = 'index.html';
+          // Используем AuthManager для выхода
+          if (window.authManager) {
+            window.authManager.logout();
+          } else {
+            localStorage.removeItem('cms_session');
+            window.location.href = 'index.html';
+          }
         }
       });
     }

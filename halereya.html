@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Галерея лiцею №157 — Ліцей №157</title>
+    <meta name="description" content="Галерея нашого лiцею">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/log.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/log.jpg">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <div class="bg-decor" aria-hidden="true">
+      <span class="blob one"></span>
+      <span class="blob two"></span>
+      <span class="blob three"></span>
+      <span class="blob four"></span>
+      <span class="blob five"></span>
+      <span class="blob six"></span>
+    </div>
+    
+    <header class="site-header" role="banner">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img class="brand-badge-img" src="assets/img/log.jpg" alt="Ліцей №157">
+          <span>Ліцей №157</span>
+        </a>
+        <nav aria-label="Основна навігація">
+          <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" data-menu-toggle aria-label="Відкрити меню">
+          </button>
+          <div id="nav-links" class="nav-links" data-nav-links>
+            <a href="index.html">Головна</a>
+            <a href="about.html">Про ліцей</a>
+            <a href="news.html">Новини</a>
+            <a href="schedule.html">Розклад</a>
+            <a href="teachers.html">Вчителі</a>
+            <a href="admission.html">Вступ</a>
+            <a href="contacts.html">Контакти</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="reveal watermark">
+            <h1><span class="text-gradient">Галерея лiцею №157</span></h1>
+            <p>Тут ви можете побачити фото наших класiв, та нашого лiцею.</p>
+          </div>
+        </div>
+      </section>
+
+      
+        <section>
+          <div class="container">
+            <h2 class="section-title accent-underline">Галерея</h2>
+            <div class="gallery-grid">
+              <p>Введіть початковий контент сторінки...</p>
+            </div>
+          </div>
+        </section>
+      
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div>© <span id="year"></span> Ліцей №157 м. Харків. Всі права захищені.</div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

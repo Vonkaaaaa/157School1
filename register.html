@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Реєстрація — Ліцей №157</title>
+    <meta name="description" content="Реєстрація в системі Ліцею №157">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/log.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/log.jpg">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+      .login-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+      
+      .login-form-wrapper {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .login-header {
+        margin-bottom: 30px;
+      }
+      
+      .login-header h1 {
+        color: #1f2937;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+      }
+      
+      .login-header p {
+        color: #6b7280;
+        margin: 0;
+      }
+      
+      .login-form {
+        text-align: left;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #374151;
+      }
+      
+      .form-input, .form-select {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        background: white;
+      }
+      
+      .form-input:focus, .form-select:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      
+      .login-btn, .register-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+      }
+      
+      .login-btn:hover, .register-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+      }
+      
+      .login-btn:active, .register-btn:active {
+        transform: translateY(0);
+      }
+      
+      .register-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+      
+      .login-link {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #e5e7eb;
+      }
+      
+      .login-link p {
+        color: #6b7280;
+        margin: 0;
+      }
+      
+      .login-link a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+      
+      .form-hint {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 5px;
+      }
+      
+      .loading {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        background: rgba(59, 130, 246, 0.1);
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+      
+      .loading.show {
+        display: block;
+      }
+      
+      .spinner {
+        border: 3px solid #f3f4f6;
+        border-top: 3px solid #3b82f6;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 10px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .message {
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-weight: 500;
+      }
+      
+      .message.success {
+        background: #f0fff4;
+        color: #22543d;
+        border: 1px solid #9ae6b4;
+      }
+      
+      .message.error {
+        background: #fef2f2;
+        color: #742a2a;
+        border: 1px solid #fed7d7;
+      }
+      
+      @media (max-width: 640px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        
+        .login-form-wrapper {
+          padding: 30px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-decor" aria-hidden="true">
+      <span class="blob one"></span>
+      <span class="blob two"></span>
+      <span class="blob three"></span>
+      <span class="blob four"></span>
+      <span class="blob five"></span>
+      <span class="blob six"></span>
+    </div>
+
+    <header class="site-header" role="banner">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img class="brand-badge-img" src="assets/img/log.jpg" alt="Ліцей №157">
+          <span>Ліцей №157</span>
+        </a>
+        <nav aria-label="Основна навігація">
+          <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" data-menu-toggle aria-label="Відкрити меню">
+          </button>
+          <div id="nav-links" class="nav-links" data-nav-links>
+            <a href="index.html">Головна</a>
+            <a href="about.html">Про ліцей</a>
+            <a href="news.html">Новини</a>
+            <a href="schedule.html">Розклад</a>
+            <a href="teachers.html">Вчителі</a>
+            <a href="admission.html">Вступ</a>
+            <a href="contacts.html">Контакти</a>
+            <a href="register.html" class="register-link" aria-current="page">Реєстрація</a>
+            <a href="login.html" class="login-link">Вхід</a>
+            <a href="profile.html" class="profile-link">Особистий кабінет</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="login-container">
+      <div class="login-form-wrapper">
+        <div class="login-header">
+          <h1>🎓 Реєстрація</h1>
+          <p>Створіть акаунт для доступу до системи ліцею</p>
+        </div>
+        
+        <form class="login-form" id="register-form">
+
+        <div id="message-container"></div>
+        
+        <div class="loading" id="loading">
+          <div class="spinner"></div>
+          <p>Реєстрація акаунта...</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="username">Нікнейм *</label>
+          <input type="text" id="username" name="username" class="form-input" required 
+                 placeholder="Введіть нікнейм" minlength="3" maxlength="20">
+          <div class="form-hint">Мінімум 3 символи, тільки літери та цифри</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Пароль *</label>
+          <input type="password" id="password" name="password" class="form-input" required 
+                 placeholder="Створіть пароль" minlength="6">
+          <div class="form-hint">Мінімум 6 символів</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Підтвердження паролю *</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" class="form-input" required 
+                 placeholder="Повторіть пароль">
+          <div class="form-hint">Паролі повинні співпадати</div>
+        </div>
+
+        <button type="submit" class="register-btn" id="register-btn">
+          📝 Зареєструватися
+        </button>
+
+        </form>
+        
+        <div class="login-link">
+          <p>Вже маєте акаунт? <a href="login.html">Увійти</a></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div>© <span id="year"></span> Ліцей №157 м. Харків. Всі права захищені.</div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/database.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script>
+      class RegisterManager {
+        constructor() {
+          this.form = document.getElementById('register-form');
+          this.messageContainer = document.getElementById('message-container');
+          this.loading = document.getElementById('loading');
+          this.registerBtn = document.getElementById('register-btn');
+          
+          this.setupEventListeners();
+          this.setupPasswordValidation();
+        }
+
+        setupEventListeners() {
+          this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+          
+          // Валідація в реальному часі
+          document.getElementById('username').addEventListener('input', (e) => this.validateUsername(e.target.value));
+          document.getElementById('email').addEventListener('input', (e) => this.validateEmail(e.target.value));
+          document.getElementById('confirmPassword').addEventListener('input', (e) => this.validatePasswordMatch());
+        }
+
+        setupPasswordValidation() {
+          const passwordInput = document.getElementById('password');
+          const requirements = {
+            length: document.getElementById('req-length'),
+            letter: document.getElementById('req-letter'),
+            number: document.getElementById('req-number')
+          };
+
+          passwordInput.addEventListener('input', (e) => {
+            const password = e.target.value;
+            
+            // Перевірка довжини
+            if (password.length >= 6) {
+              requirements.length.classList.add('valid');
+              requirements.length.classList.remove('invalid');
+            } else {
+              requirements.length.classList.add('invalid');
+              requirements.length.classList.remove('valid');
+            }
+            
+            // Перевірка літери
+            if (/[a-zA-Zа-яА-Я]/.test(password)) {
+              requirements.letter.classList.add('valid');
+              requirements.letter.classList.remove('invalid');
+            } else {
+              requirements.letter.classList.add('invalid');
+              requirements.letter.classList.remove('valid');
+            }
+            
+            // Перевірка цифри
+            if (/\d/.test(password)) {
+              requirements.number.classList.add('valid');
+              requirements.number.classList.remove('invalid');
+            } else {
+              requirements.number.classList.add('invalid');
+              requirements.number.classList.remove('valid');
+            }
+            
+            this.validatePasswordMatch();
+          });
+        }
+
+        validateUsername(username) {
+          const usernameRegex = /^[a-zA-Z0-9_]+$/;
+          return username.length >= 3 && username.length <= 20 && usernameRegex.test(username);
+        }
+
+        validateEmail(email) {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return emailRegex.test(email);
+        }
+
+        validatePasswordMatch() {
+          const password = document.getElementById('password').value;
+          const confirmPassword = document.getElementById('confirmPassword').value;
+          
+          if (confirmPassword && password !== confirmPassword) {
+            document.getElementById('confirmPassword').style.borderColor = '#e53e3e';
+            return false;
+          } else if (confirmPassword) {
+            document.getElementById('confirmPassword').style.borderColor = '#38a169';
+            return true;
+          }
+          return true;
+        }
+
+        showMessage(message, type) {
+          this.messageContainer.innerHTML = `
+            <div class="message ${type}">
+              ${message}
+            </div>
+          `;
+        }
+
+        setLoading(loading) {
+          if (loading) {
+            this.loading.style.display = 'block';
+            this.registerBtn.disabled = true;
+            this.form.style.opacity = '0.6';
+          } else {
+            this.loading.style.display = 'none';
+            this.registerBtn.disabled = false;
+            this.form.style.opacity = '1';
+          }
+        }
+
+        async handleSubmit(e) {
+          e.preventDefault();
+          
+          const formData = new FormData(this.form);
+          const data = Object.fromEntries(formData.entries());
+          
+          // Валідація
+          if (!this.validateForm(data)) {
+            return;
+          }
+          
+          this.setLoading(true);
+          
+          try {
+            // Підготовка даних для реєстрації
+            const userData = {
+              username: data.username.trim(),
+              password: data.password,
+              email: data.username.trim() + '@lyceum157.kh.ua',
+              fullName: data.username.trim(),
+              phone: '',
+              class: '',
+              role: 'user'
+            };
+
+            // Реєстрація через базу даних
+            const result = await window.database.registerUser(userData);
+            
+            if (result.success) {
+              this.showMessage('🎉 Реєстрація успішна! Тепер ви можете увійти в систему.', 'success');
+              
+              // Перенаправлення на сторінку входу через 2 секунди
+              setTimeout(() => {
+                window.location.href = 'login.html';
+              }, 2000);
+            } else {
+              this.showMessage(`❌ ${result.message}`, 'error');
+            }
+          } catch (error) {
+            console.error('Помилка реєстрації:', error);
+            this.showMessage('❌ Помилка з\'єднання з сервером. Спробуйте пізніше.', 'error');
+          } finally {
+            this.setLoading(false);
+          }
+        }
+
+        validateForm(data) {
+          // Перевірка обов'язкових полів
+          if (!data.username || !data.password || !data.confirmPassword) {
+            this.showMessage('❌ Заповніть всі поля', 'error');
+            return false;
+          }
+
+          // Валідація username
+          if (!this.validateUsername(data.username)) {
+            this.showMessage('❌ Нікнейм повинен містити 3-20 символів (літери, цифри, підкреслення)', 'error');
+            return false;
+          }
+
+          // Валідація паролю
+          if (data.password.length < 6) {
+            this.showMessage('❌ Пароль повинен містити мінімум 6 символів', 'error');
+            return false;
+          }
+
+          // Перевірка збігу паролів
+          if (data.password !== data.confirmPassword) {
+            this.showMessage('❌ Паролі не збігаються', 'error');
+            return false;
+          }
+
+          return true;
+        }
+      }
+
+      // Ініціалізація при завантаженні сторінки
+      document.addEventListener('DOMContentLoaded', () => {
+        new RegisterManager();
+        document.getElementById('year').textContent = new Date().getFullYear();
+      });
+    </script>
+  </body>
+</html>

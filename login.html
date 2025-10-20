@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Вхід в CMS - Ліцей №157</title>
+    <meta name="description" content="Авторизація для доступу до системи управління контентом">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/img/log.jpg">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/log.jpg">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <style>
+      
+      .login-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+      
+      .login-form-wrapper {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        text-align: center;
+        padding: 40px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .login-header {
+        margin-bottom: 30px;
+      }
+      
+      .login-logo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        display: block;
+      }
+      
+      .login-title {
+        color: #1f2937;
+        font-size: 2rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+      }
+      
+      .login-subtitle {
+        color: #6b7280;
+        margin: 0;
+      }
+      
+      .login-form {
+        text-align: left;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #374151;
+      }
+      
+      .form-input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+        background: white;
+      }
+      
+      .form-input:focus {
+        outline: none;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+      
+      .login-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+      }
+      
+      .login-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+      }
+      
+      .login-btn:active {
+        transform: translateY(0);
+      }
+      
+      .error-message {
+        background: #fee2e2;
+        color: #991b1b;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #fca5a5;
+        font-size: 14px;
+      }
+      
+      .success-message {
+        background: #d1fae5;
+        color: #065f46;
+        padding: 12px 16px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border: 1px solid #a7f3d0;
+        font-size: 14px;
+      }
+      
+      .forgot-password {
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      .forgot-password a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      
+      .forgot-password a:hover {
+        text-decoration: underline;
+      }
+      
+      .register-link {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .register-link p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.8);
+      }
+      
+      .register-link a {
+        color: #90cdf4;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      
+      .register-link a:hover {
+        text-decoration: underline;
+      }
+      
+      .message {
+        margin: 15px 0;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-align: center;
+      }
+      
+      .message.success {
+        background: #d1fae5;
+        color: #065f46;
+        border: 1px solid #a7f3d0;
+      }
+      
+      .message.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+      }
+      
+      
+      .back-link {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 10px 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        transition: all 0.3s ease;
+      }
+      
+      .back-link:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+      
+      @media (max-width: 480px) {
+        .login-container {
+          padding: 30px 20px;
+        }
+        
+        .login-title {
+          font-size: 1.5rem;
+        }
+        
+        .back-link {
+          position: static;
+          display: inline-block;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-decor" aria-hidden="true">
+      <span class="blob one"></span>
+      <span class="blob two"></span>
+      <span class="blob three"></span>
+      <span class="blob four"></span>
+      <span class="blob five"></span>
+      <span class="blob six"></span>
+    </div>
+
+    <header class="site-header" role="banner">
+      <div class="container nav">
+        <a class="brand" href="index.html">
+          <img class="brand-badge-img" src="assets/img/log.jpg" alt="Ліцей №157">
+          <span>Ліцей №157</span>
+        </a>
+        <nav aria-label="Основна навігація">
+          <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" data-menu-toggle aria-label="Відкрити меню">
+          </button>
+          <div id="nav-links" class="nav-links" data-nav-links>
+            <a href="index.html">Головна</a>
+            <a href="about.html">Про ліцей</a>
+            <a href="news.html">Новини</a>
+            <a href="schedule.html">Розклад</a>
+            <a href="teachers.html">Вчителі</a>
+            <a href="admission.html">Вступ</a>
+            <a href="contacts.html">Контакти</a>
+            <a href="register.html" class="register-link">Реєстрація</a>
+            <a href="login.html" class="login-link" aria-current="page">Вхід</a>
+            <a href="profile.html" class="profile-link">Особистий кабінет</a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="login-container">
+      <div class="login-form-wrapper">
+        <div class="login-header">
+          <h1>🔑 Вхід до системи</h1>
+          <p>Увійдіть для доступу до особистого кабінету</p>
+        </div>
+        
+        
+        <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label for="username" class="form-label">Нікнейм</label>
+          <input type="text" id="username" class="form-input" placeholder="Введіть нікнейм" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password" class="form-label">Пароль</label>
+          <input type="password" id="password" class="form-input" placeholder="Введіть пароль" required>
+        </div>
+        
+        <div id="message"></div>
+        
+        <button type="submit" class="login-btn">
+          🔐 Увійти в систему
+        </button>
+      </form>
+      
+      <div class="forgot-password">
+        <a href="#" onclick="showForgotPassword()">Забули пароль?</a>
+      </div>
+      
+      <div class="register-link">
+        <p>Немає акаунта? <a href="register.html">Зареєструватися</a></p>
+      </div>
+    </div>
+  </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div>© <span id="year"></span> Ліцей №157 м. Харків. Всі права захищені.</div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/database.js"></script>
+    <script src="assets/js/auth.js"></script>
+
+    <script>
+      class LoginManager {
+        constructor() {
+          this.form = document.getElementById('loginForm');
+          this.messageDiv = document.getElementById('message');
+          this.init();
+        }
+
+        init() {
+          this.setupForm();
+          this.checkExistingSession();
+        }
+
+        setupForm() {
+          this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleLogin();
+          });
+        }
+
+        async handleLogin() {
+          console.log('handleLogin викликано');
+          const username = document.getElementById('username').value.trim();
+          const password = document.getElementById('password').value;
+
+          console.log('Дані форми:', { username, password: password ? '***' : 'empty' });
+
+          if (!username || !password) {
+            this.showMessage('Заповніть всі поля', 'error');
+            return;
+          }
+
+          this.setLoading(true);
+
+          try {
+            // Використовуємо database.js для авторизації
+            const result = await window.database.authenticateUser(username, password);
+            
+            if (result.success) {
+              // Створюємо сесію
+              const sessionData = {
+                username: result.userData.username,
+                role: result.userData.role,
+                loginTime: new Date().toISOString(),
+                timestamp: new Date().getTime()
+              };
+              
+              localStorage.setItem('cms_session', JSON.stringify(sessionData));
+              
+              // Обновляем интерфейс навигации
+              if (window.authManager) {
+                window.authManager.updateNavigationUI();
+              }
+              
+              this.showMessage('Успішний вхід! Перенаправлення...', 'success');
+              
+              // Перенаправляємо залежно від ролі
+              setTimeout(() => {
+                if (result.userData.role === 'admin' || result.userData.role === 'teacher') {
+                  window.location.href = 'cms.html';
+                } else {
+                  window.location.href = 'profile.html';
+                }
+              }, 1000);
+            } else {
+              this.showMessage(result.message || 'Помилка входу', 'error');
+            }
+          } catch (error) {
+            console.error('Помилка авторизації:', error);
+            this.showMessage('Помилка з\'єднання з сервером', 'error');
+          } finally {
+            this.setLoading(false);
+          }
+        }
+
+        checkExistingSession() {
+          const existingSession = localStorage.getItem('cms_session');
+          if (existingSession) {
+            try {
+              const sessionData = JSON.parse(existingSession);
+              // Перевіряємо, чи не застаріла сесія (24 години)
+              const loginTime = new Date(sessionData.loginTime);
+              const now = new Date();
+              const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+              
+              if (hoursDiff < 24) {
+                if (sessionData.role === 'admin' || sessionData.role === 'teacher') {
+                  window.location.href = 'cms.html';
+                } else {
+                  window.location.href = 'profile.html';
+                }
+              } else {
+                localStorage.removeItem('cms_session');
+              }
+            } catch (e) {
+              localStorage.removeItem('cms_session');
+            }
+          }
+        }
+
+        showMessage(message, type) {
+          this.messageDiv.innerHTML = `<div class="message ${type}">${message}</div>`;
+        }
+
+        setLoading(loading) {
+          const submitBtn = this.form.querySelector('button[type="submit"]');
+          if (loading) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '⏳ Вхід...';
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '🔐 Увійти в систему';
+          }
+        }
+      }
+
+      function showForgotPassword() {
+        alert('Для відновлення паролю зверніться до адміністратора:\nadmin@lyceum157.kh.ua\n+38 (057) 123-45-67');
+      }
+
+      // Ініціалізація при завантаженні сторінки
+      document.addEventListener('DOMContentLoaded', () => {
+        // Перевіряємо чи завантажена база даних
+        if (window.database) {
+          new LoginManager();
+        } else {
+          console.error('База даних не завантажена');
+          setTimeout(() => {
+            if (window.database) {
+              new LoginManager();
+            } else {
+              alert('Помилка завантаження системи. Перезавантажте сторінку.');
+            }
+          }, 1000);
+        }
+        document.getElementById('year').textContent = new Date().getFullYear();
+      });
+    </script>
+  </body>
+</html>
